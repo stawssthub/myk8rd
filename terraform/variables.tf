@@ -68,3 +68,15 @@ variable "dns_service_ip" {
   type = string
   description = "IP address of dns service"
 }
+
+variable "client_id" {
+  type = string
+}
+
+variable "client_secret" {
+  type = string
+}
+
+variable "tenant_id" {
+  type = string
+}

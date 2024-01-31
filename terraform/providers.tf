@@ -12,7 +12,10 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias               = "dev-sub"
-  subscription_id     = "a83aa8d1-fd5e-42ff-a17c-0907465900ea"
+  subscription_id     = var.subscription_id
+  client_id = var.client_id
+  client_secret = var.client_secret
+  tenant_id = ""
   skip_provider_registration = true
   features {}
 }
