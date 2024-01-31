@@ -1,0 +1,5 @@
+tenant_id            = "fc8d2553-ee3d-4664-b11a-500cc2965477"
+resource_group_name  = "terraformrg"
+storage_account_name = "terraformsa3sa"
+container_name       = "tfcontainer"
+key                  = "infrastructure-dev.tfstate"

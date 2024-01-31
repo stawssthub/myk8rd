@@ -1,0 +1,1 @@
+terraform -chdir=terraform apply -var-file="..\environments\infrastructure\dev.tfvars" -parallelism=1

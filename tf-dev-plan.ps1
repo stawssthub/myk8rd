@@ -1,0 +1,1 @@
+terraform -chdir=terraform plan -lock=false -var-file="..\environments\infrastructure\dev.tfvars"

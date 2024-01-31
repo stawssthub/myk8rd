@@ -1,0 +1,1 @@
+terraform -chdir=terraform init -backend-config="..\environments\infrastructure\dev.backend.tfvars" -reconfigure

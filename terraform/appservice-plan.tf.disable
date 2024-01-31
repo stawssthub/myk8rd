@@ -1,0 +1,24 @@
+resource "azurerm_resource_group" "ktest_rg" {
+  provider = azurerm.dev-sub
+  location = var.location
+  name     = lower("hyla-${local.location}-${local.env}-k8-rg")
+  tags     = var.tags
+}
+
+
+module "app_service_plan" {
+  source            = "./modules/azurerm-modules-app-service-plan"
+  providers = {
+    azurerm = azurerm.dev-sub
+  }
+
+location                 = local.location
+  name = "testa-app-plan"
+  resource_group_name    = azurerm_resource_group.ktest_rg.name
+
+  settings = {
+   os_type           = "Windows"
+   sku_name          = "S1"
+}
+  tags              = var.tags
+}
