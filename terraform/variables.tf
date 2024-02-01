@@ -32,9 +32,9 @@ variable "environment" {
 
 
 
-/*variable "subscription_id" {
+variable "subscription_id" {
   type = string
-} */
+} 
 
 variable "vnet_address_space" {
   description = "app vnet address space."
