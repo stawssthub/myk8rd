@@ -1,7 +1,9 @@
 name: Terraform Plan for PR
 
 on: 
-    pull_request:
+    
+    #pull_request:
+     push:
          branches:
             - main
 
