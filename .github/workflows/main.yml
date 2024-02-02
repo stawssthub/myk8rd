@@ -11,8 +11,8 @@ jobs:
     terraform-plan-dev:
         runs-on: ubuntu-latest
         env:
-           ARM_CLIENT_ID: ${{secrests.TF_CLIENT_ID}}
-           ARM_CLIENT_SECRET: ${{secrests.TF_ARM_CLIENT_SECRETS}}
+           ARM_CLIENT_ID: ${{secrets.TF_CLIENT_ID}}
+           ARM_CLIENT_SECRET: ${{secrets.TF_ARM_CLIENT_SECRETS}}
            ARM_SUBSCRIPTION_ID: ${{secrets.TF_SUBSCRIPTION_ID}}
            ARM_TENANT_ID: ${{secrets.TF_TENANT_ID}}
            TF_LOG: INFO
