@@ -1,0 +1,43 @@
+name: Terraform Plan for PR
+
+on: 
+    pull_request:
+         branches:
+            - main
+
+jobs:
+    terraform-plan-dev:
+        runs-on: ubuntu-latest
+        env:
+           ARM_CLIENT_ID: ${{secrests.TF_CLIENT_ID}}
+           ARM_CLIENT_SECRET: ${{secrests.TF_ARM_CLIENT_SECRETS}}
+           ARM_SUBSCRIPTION_ID: ${{secrets.TF_SUBSCRIPTION_ID}}
+           ARM_TENANT_ID: ${{secrets.TF_TENANT_ID}}
+           TF_LOG: INFO
+           working-directory: terraform
+
+        steps:
+            - name: Checkout repo
+              uses: action/checkout@v2
+            - name: Setup Terraform
+              uses: hashicorp/setup-terraform@v1
+
+            - name: Terraform Format
+              id:   dev-fmt
+              run:  terraform fmt -check
+              continue-on-error: true
+
+            - name: Terraform initialization DEV
+              id:  dev-init
+              run: terraform init -backend-config="../environments/infrastructure/dev.backend.tfvars"
+              working-directory: ${{ env.working-directory }}
+
+            - name: Terraform Validation
+              id: dev-validate
+              run: teraaform validate -no-color
+
+            - name: Terraform Plan DEV
+              id: dev-plan
+              run: terraform plan -var-file="../environments/infrastructure/dev.tfvars"
+              working-directory: ${{ env.working-directory }}
+          
