@@ -39,7 +39,7 @@ jobs:
 
             - name: Terraform Validation
               id: dev-validate
-              run: teraaform validate -no-color
+              run: terraform validate -no-color
 
             - name: Terraform Plan DEV
               id: dev-plan
